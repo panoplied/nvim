@@ -53,6 +53,7 @@ call plug#begin(stdpath('data') . '/plugged')
 " Coc extension https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -60,6 +61,10 @@ Plug 'tpope/vim-fugitive'
 
 " Color schemes
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " Dev Icons (always must be loaded last)
 Plug 'ryanoasis/vim-devicons'
@@ -68,6 +73,18 @@ call plug#end()
 
 
 " PLUGIN SETTINGS ============================================================
+
+
+" FZF
+" Fast fuzzy search tool not only for vim
+" Installed system globally via 'sudo apt install fzf', just sourcing default package config as said in man
+source /usr/share/doc/fzf/examples/fzf.vim
+
+" -m enables multiselect with Tab/Shift+Tab
+nnoremap <C-p> :FZF -m<cr>
+
+" TODO
+" set up fzf to work with ripgrep
 
 
 " COC.NVIM
@@ -234,19 +251,26 @@ let NERDTreeDirArrows=1
 let g:airline_powerline_fonts=1
 
 
+" COLOR SCHEMES SETTINGS =====================================================
+
+" Just uncomment everything for desired scheme only
+
 " GRUVBOX
-
-" https://github.com/morhetz/gruvbox
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_bold=1
-let g:gruvbox_underline=1
-let g:gruvbox_termcolors=1
-let g:gruvbox_improved_strings=1
-let g:gruvbox_improved_warnings=1
-set background=dark
-colorscheme gruvbox
+" let g:gruvbox_contrast_dark='hard'
+" let g:gruvbox_bold=1
+" let g:gruvbox_underline=1
+" let g:gruvbox_termcolors=1
+" let g:gruvbox_improved_strings=1 <- actually this makes JSX nearly unreadable (I mean even more)
+" let g:gruvbox_improved_warnings=1
+" set background=dark
+" colorscheme gruvbox
 
 
-" TODO
-" - Connect FZF for fuzzy file search, set up to work with ripgrep.
-" - Set up C/C++ language server for coc.nvim
+" VIM CODE DARK
+" colorscheme codedark
+" let g:airline_theme = 'codedark'
+
+" AYU
+let ayucolor = 'dark'
+let g:airline_theme = 'ayu_dark'
+colorscheme ayu
