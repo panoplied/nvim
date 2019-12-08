@@ -4,7 +4,7 @@
 " Thanks: miripiruni
 
 " Nvim >= 0.3.4 required, >= 4.0.0 best
-" Recommended options for plugins marked with plugins name as [plug]
+" Recommended options for plugins marked with plugin names as [plug]
 
 
 " EDITOR SETTINGS ============================================================
@@ -36,7 +36,7 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁ
 
 " EDITOR CUSTOM SHORTCUTS ====================================================
 
-" Navigate split with Ctrl + vimkeys
+" Navigate splits with Ctrl + vimkeys
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -101,12 +101,13 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " Key mappings
 
 " Use tab for trigger completion with characters ahead and navigate.
-" Use ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" And also do not break default tab key functionality
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
