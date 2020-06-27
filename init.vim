@@ -58,6 +58,7 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf.vim'
 
 " Color schemes
 Plug 'morhetz/gruvbox'
@@ -77,8 +78,8 @@ call plug#end()
 
 " FZF
 " Fast fuzzy search tool not only for vim
-" Installed system globally via 'sudo apt install fzf', just sourcing default package config as said in man
-source /usr/share/doc/fzf/examples/fzf.vim
+" If installed system globally via 'sudo apt install fzf' and not via Plug, just sourcing default package config as said in man
+" source /usr/share/doc/fzf/examples/fzf.vim
 
 " -m enables multiselect with Tab/Shift+Tab
 nnoremap <C-p> :FZF -m<cr>
