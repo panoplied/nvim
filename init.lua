@@ -3,4 +3,5 @@ require "core.keymappings"
 require "core.plugins"
 require "core.colorscheme"
 require "core.cmp"
-require("core.lsp")
+require "core.lsp"
+require "core.telescope"

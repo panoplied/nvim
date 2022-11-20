@@ -59,6 +59,10 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig"           -- enable LSP
   use "williamboman/nvim-lsp-installer" -- language server installer
 
+  -- Telescope
+  use "nvim-telescope/telescope.nvim"
+  use "nvim-telescope/telescope-media-files.nvim"
+
   -- Color themes
   use "folke/tokyonight.nvim"
 
