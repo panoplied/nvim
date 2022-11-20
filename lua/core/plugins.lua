@@ -35,10 +35,23 @@ packer.init {
 -- Use plugins
 return packer.startup(function(use)
 
-  -- Plugin list
-  use "wbthomason/packer.nvim"
-  use "nvim-lua/popup.nvim"
-  use "nvim-lua/plenary.nvim"
+  -- Essential plugins
+  use "wbthomason/packer.nvim"      -- plugin manager
+  use "nvim-lua/popup.nvim"         -- popup API
+  use "nvim-lua/plenary.nvim"       -- lua functions
+
+  -- Completions
+  use "hrsh7th/nvim-cmp"            -- completion plugin for:
+  use "hrsh7th/cmp-buffer"          -- buffers
+  use "hrsh7th/cmp-path"            -- paths
+  use "hrsh7th/cmp-cmdline"         -- commands
+
+  use "saadparwaiz1/cmp_luasnip"    -- snippet completions
+
+  -- Snippets
+  use "L3MON4D3/LuaSnip"            -- snippet engine
+  use "rafamadriz/friendly-snippets"-- a bunch of snippets
+
 
   -- Color themes
   use "folke/tokyonight.nvim"
