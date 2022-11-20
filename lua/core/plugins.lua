@@ -27,7 +27,7 @@ end
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "rounded" }
+      return require("packer.util").float{ border = "rounded" }
     end,
   },
 }
@@ -36,22 +36,28 @@ packer.init {
 return packer.startup(function(use)
 
   -- Essential plugins
-  use "wbthomason/packer.nvim"      -- plugin manager
-  use "nvim-lua/popup.nvim"         -- popup API
-  use "nvim-lua/plenary.nvim"       -- lua functions
+  use "wbthomason/packer.nvim"          -- plugin manager
+  use "nvim-lua/popup.nvim"             -- popup API
+  use "nvim-lua/plenary.nvim"           -- lua functions
 
   -- Completions
-  use "hrsh7th/nvim-cmp"            -- completion plugin for:
-  use "hrsh7th/cmp-buffer"          -- buffers
-  use "hrsh7th/cmp-path"            -- paths
-  use "hrsh7th/cmp-cmdline"         -- commands
+  use "hrsh7th/nvim-cmp"                -- completion plugin for:
+  use "hrsh7th/cmp-buffer"              -- buffers
+  use "hrsh7th/cmp-path"                -- paths
+  use "hrsh7th/cmp-cmdline"             -- commands
 
-  use "saadparwaiz1/cmp_luasnip"    -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"            -- LSP competions
+  use "hrsh7th/cmp-nvim-lua"            -- Lua completions (good for configs)
+
+  use "saadparwaiz1/cmp_luasnip"        -- snippet completions
 
   -- Snippets
-  use "L3MON4D3/LuaSnip"            -- snippet engine
-  use "rafamadriz/friendly-snippets"-- a bunch of snippets
+  use "L3MON4D3/LuaSnip"                -- snippet engine
+  use "rafamadriz/friendly-snippets"    -- a bunch of snippets
 
+  -- LSP
+  use "neovim/nvim-lspconfig"           -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- language server installer
 
   -- Color themes
   use "folke/tokyonight.nvim"
