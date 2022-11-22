@@ -168,6 +168,7 @@ lvim.plugins = {
       "folke/trouble.nvim",
       cmd = "TroubleToggle",
     },
+    {"Olical/conjure"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
