@@ -1,6 +1,14 @@
-# Custom Neovim Setup
+# Custom LunarVim Config
 
-Install:
+Install LunarVim
 ```
-git clone git@github.com:panoplied/nvim.git ~/.config/nvim
+LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+```
+
+Add config
+```
+cd ~/.config/lvim
+git init
+git remote add origin git@github.com:panoplied/nvim.git
+git pull origin master --allow-unrelated-histories
 ```
