@@ -107,10 +107,12 @@ require("lazy").setup({
     -- nvim-lspconfig - LSP configurer
     {
         "neovim/nvim-lspconfig",
+        -- Commented out because all config is done in mason-lspconfig section
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.clangd.setup({})
-            -- lspconfig.lua_ls_setup({})
+            lspconfig.lua_ls.setup({})
+            -- lspconfig.rust_analyzer.setup({})
         end,
     },
 
@@ -121,5 +123,26 @@ require("lazy").setup({
             require("mason").setup()
         end,
     },
-})
 
+    -- mason-lspconfig - bridge mason and lspconfig
+    {
+        "williamboman/mason-lspconfig",
+        dependencies = { "mason.nvim" },    -- NOTE: can also be "williamboman/mason.nvim"
+        config = function()
+            require("mason-lspconfig").setup()
+            require("mason-lspconfig").setup_handlers({
+                -- The first entry (without a key) will be the default handler
+                -- and will be called for each installed server that doesn't have
+                -- a dedicated handler.
+                function(server_name)   -- Default handler
+                    require("lspconfig")[server_name].setup({})
+                end,
+                -- Next, you can provide a dedicated handler for specific server.
+                -- For example, a handler override for the `rust_analyzer`:
+                -- ["rust_analyzer"] = function()
+                --     require("rust_tools").setup()
+                -- end,
+            })
+        end,
+    },
+})
