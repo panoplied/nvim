@@ -98,10 +98,51 @@ require("lazy").setup({
     },
 
     -- nvim-treesitter/nvim-treesitter-textobjects
-    -- Add support for text-objects, selec, move, swap and peek support
+    -- Add support for text-objects, select, move, swap and peek support
     -- NOTE: this table just adds plugin, the module itself is setup in the (prev) nvim-treesitter section
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
-})
 
+    -- nvim-lspconfig - LSP configurer
+    {
+        "neovim/nvim-lspconfig",
+        -- Commented out because all config is done in mason-lspconfig section
+        config = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.clangd.setup({})
+            lspconfig.lua_ls.setup({})
+            -- lspconfig.rust_analyzer.setup({})
+        end,
+    },
+
+    -- Mason - package manager for LSPs etc.
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end,
+    },
+
+    -- mason-lspconfig - bridge mason and lspconfig
+    {
+        "williamboman/mason-lspconfig",
+        dependencies = { "mason.nvim" },    -- NOTE: can also be "williamboman/mason.nvim"
+        config = function()
+            require("mason-lspconfig").setup()
+            require("mason-lspconfig").setup_handlers({
+                -- The first entry (without a key) will be the default handler
+                -- and will be called for each installed server that doesn't have
+                -- a dedicated handler.
+                function(server_name)   -- Default handler
+                    require("lspconfig")[server_name].setup({})
+                end,
+                -- Next, you can provide a dedicated handler for specific server.
+                -- For example, a handler override for the `rust_analyzer`:
+                -- ["rust_analyzer"] = function()
+                --     require("rust_tools").setup()
+                -- end,
+            })
+        end,
+    },
+})
