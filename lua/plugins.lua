@@ -98,10 +98,28 @@ require("lazy").setup({
     },
 
     -- nvim-treesitter/nvim-treesitter-textobjects
-    -- Add support for text-objects, selec, move, swap and peek support
+    -- Add support for text-objects, select, move, swap and peek support
     -- NOTE: this table just adds plugin, the module itself is setup in the (prev) nvim-treesitter section
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
+    },
+
+    -- nvim-lspconfig - LSP configurer
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.clangd.setup({})
+            -- lspconfig.lua_ls_setup({})
+        end,
+    },
+
+    -- Mason - package manager for LSPs etc.
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end,
     },
 })
 
