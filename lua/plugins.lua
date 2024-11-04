@@ -20,9 +20,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy with plugins
 -- requrie("lazy").setup(plugins, opts)
 require("lazy").setup({
-    -- TODO: colorscheme
 
-    -- nvim-treesitter
+    -- [[ vim-sleuth ]]
+    -- Detect tabstop and shiftwidth automatically
+    "tpope/vim-sleuth",
+
+    -- [[ nvim-treesitter ]]
     -- Add support for treesitter parsers, incremental selection + setup textobjects
     {
         "nvim-treesitter/nvim-treesitter",
@@ -39,6 +42,7 @@ require("lazy").setup({
                     keymaps = {
                         -- TODO: reconsider keymaps for incremental selection
                         -- Defaults are:
+
                         -- init_selection = "gnn",  -- set to `false` to disable one of the mappings
                         -- node_incremental = "grn",
                         -- scope_incremental = "grc",
@@ -97,26 +101,18 @@ require("lazy").setup({
         end,
     },
 
-    -- nvim-treesitter/nvim-treesitter-textobjects
-    -- Add support for text-objects, select, move, swap and peek support
+    -- [[ "nvim-treesitter/nvim-treesitter-textobjects" ]]
+    -- Add support for text-objects, select, move, swap and peek
     -- NOTE: this table just adds plugin, the module itself is setup in the (prev) nvim-treesitter section
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+    "nvim-treesitter/nvim-treesitter-textobjects",
 
-    -- nvim-lspconfig - LSP configurer
-    {
-        "neovim/nvim-lspconfig",
-        -- Commented out because all config is done in mason-lspconfig section
-        config = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.clangd.setup({})
-            lspconfig.lua_ls.setup({})
-            -- lspconfig.rust_analyzer.setup({})
-        end,
-    },
+    -- [[ nvim-lspconfig ]]
+    -- LSP configurer
+    -- NOTE: All config is done in mason-lspconfig section
+    "neovim/nvim-lspconfig",
 
-    -- Mason - package manager for LSPs etc.
+    -- [[ mason ]]
+    -- Package manager for LSPs etc.
     {
         "williamboman/mason.nvim",
         config = function()
@@ -124,24 +120,43 @@ require("lazy").setup({
         end,
     },
 
-    -- mason-lspconfig - bridge mason and lspconfig
+    -- [[ mason-lspconfig ]]
+    -- Bridge mason and lspconfig
     {
         "williamboman/mason-lspconfig",
+        -- dependencies = { "mason.nvim", "neovim/nvim-lspconfig" },
         dependencies = { "mason.nvim" },    -- NOTE: can also be "williamboman/mason.nvim"
         config = function()
             require("mason-lspconfig").setup()
+            -- NOTE: `help mason-lspconfig-automatic-server-setup`
             require("mason-lspconfig").setup_handlers({
-                -- The first entry (without a key) will be the default handler
-                -- and will be called for each installed server that doesn't have
-                -- a dedicated handler.
-                function(server_name)   -- Default handler
+
+                -- First entry (without a key) is the default handler
+                -- called for each server without dedicated handler
+                function(server_name)
                     require("lspconfig")[server_name].setup({})
                 end,
+
                 -- Next, you can provide a dedicated handler for specific server.
                 -- For example, a handler override for the `rust_analyzer`:
                 -- ["rust_analyzer"] = function()
                 --     require("rust_tools").setup()
                 -- end,
+
+                ["lua_ls"] = function()
+                    require("lspconfig").lua_ls.setup({
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    -- Get the lua_ls LSP to recognize `vim` global
+                                    -- and supress warnings
+                                    globals = { "vim" },
+                                },
+                            },
+                        },
+                    })
+                end,
+
             })
         end,
     },
