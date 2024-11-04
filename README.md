@@ -1,1 +1,3 @@
 # nvim config
+
+💻🐅

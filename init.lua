@@ -1,1 +1,2 @@
-require "panoplied.options"
+require("options")
+require("plugins")
