@@ -21,6 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 -- requrie("lazy").setup(plugins, opts)
 require("lazy").setup({
 
+    --[[ colorschemes ]]
+    "p00f/alabaster.nvim",
+    "folke/tokyonight.nvim",
+    -- "rose-pine/neovim",
+
     -- [[ vim-sleuth ]]
     -- Detect tabstop and shiftwidth automatically
     "tpope/vim-sleuth",

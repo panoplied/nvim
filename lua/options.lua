@@ -52,7 +52,8 @@ vim.opt.cursorline = true
 -- (really convenient for block selections)
 vim.opt.virtualedit = "block"
 
--- vim.opt.termguicolors = true
+-- Support 24-bit RGB
+vim.opt.termguicolors = true
 
 
 -- [[ KEYMAPS ]]
