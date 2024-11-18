@@ -1,11 +1,10 @@
 -- [[ OPTIONS ]]
 
-vim.g.mapleader = " " -- NOTE: mapping leader must happen before loading plugins
-vim.g.maplocalleader = " "
 vim.opt.number = true
 vim.opt.mouse = "a"
 -- vim.opt.showmode = true -- TODO: consider disabling showing mode when status line plugin installed
 vim.opt.wrap = false
+vim.opt.autoindent = true
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true -- Case-insensitive search unless \C or capital letters used
@@ -18,8 +17,14 @@ vim.opt.splitright = true -- Horizontal splits open on the right
 vim.opt.inccommand = "split" -- Preview substitutions realtime in a split
 vim.opt.cursorline = true
 vim.opt.scrolloff = 2 -- TODO: reconsider even having this
+vim.opt.sidescrolloff = 2
 vim.opt.virtualedit = "block" -- Allow positioning cursor even where is no char (convenient for block selections <C-v>)
 vim.opt.termguicolors = true -- Support 24-bit RGB
+
+-- vim.opt.shifwidth = 4
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.expandtab = true
 
 vim.opt.list = true -- Set up some whitespaces chars display (`h: 'list'`, `h: 'listchars'`)
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
@@ -57,3 +62,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+

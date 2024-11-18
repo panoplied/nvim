@@ -21,45 +21,45 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: If using Kitty, its recent versions have Nerd Font icons support built in (no need to install font separately).
 vim.g.is_nerd_font_available = true
 
--- [[ Setup lazy with plugins ]]
--- requrie('lazy').setup(plugins, opts)
-
 require("lazy").setup({
+
+  --[[ File Tree ]]
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+  },
 
   --[[ colorschemes ]]
   {
     "folke/tokyonight.nvim",
+    lazy = false,
     priority = 1000,
     init = function()
       vim.cmd.colorscheme("tokyonight-night")
     end,
   },
-  {
-    "p00f/alabaster.nvim",
-    -- init = function()
-    --     vim.cmd.colorscheme 'alabaster'
-    -- end,
-    -- config = function()
-    --     vim.g.alabaster_dim_comments = true
-    -- end,
-  },
-  -- 'rose-pine/neovim',
 
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
   { -- Add git signs to the gutter and change managing utils
     "lewis6991/gitsigns.nvim",
     ---[[ TODO: configure signs
-        opts = {
-            signs = {
-                add = { text = '+' },
-                change = { text = '~' },
-                delete = { text = '_' },
-                topdelete = { text = '‾' },
-                changedelete = { text = '~' },
-            },
-        },
-        --]]
+    opts = {
+      signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+      },
+    },
+    --]]
   },
 
   { --- Show pending keybinds
@@ -509,7 +509,7 @@ require("lazy").setup({
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           -- So if you have a snippet that's like:
-          -- function $name($args)
+          -- funct
           --   $body
           -- end
           --
