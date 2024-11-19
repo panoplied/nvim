@@ -14,3 +14,7 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Set focus to the left windo
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Set focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Set focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Set focus to the upper window" })
+
+-- Stay in visual mode when indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
