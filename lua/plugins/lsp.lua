@@ -134,10 +134,12 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {}
+        clangd = {},
+
+        pyright = {},
+
+        rust_analyzer = {},
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = {...},
@@ -152,12 +154,23 @@ return {
             },
           },
         },
+
         ts_ls = {
           cmd = { "typescript-language-server", "--stdio", "--log-level", "4" },
           init_options = {
             hostinfo = "vim",
             maxTsServerMemory = 8192,
           },
+        },
+
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+          gofumpt = true,
         },
       }
 

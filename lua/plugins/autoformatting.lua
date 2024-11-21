@@ -13,7 +13,6 @@ return {
       desc = "[F]ormat buffer",
     },
   },
-
   opts = {
     notify_on_error = false,
 
@@ -39,6 +38,7 @@ return {
 
     formatters_by_ft = {
       lua = { "stylua" },
+      go = { "gofumpt", "goimports", "golines" },
       -- Conform can also run multimple formatters sequentially
       -- python = { "isort", "black" },
       --

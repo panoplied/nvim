@@ -23,7 +23,7 @@ vim.g.is_nerd_font_available = true
 
 require("lazy").setup({
   require("plugins.colorscheme"),
-  -- require("plugins.neotree"),
+  require("plugins.neotree"),
   require("plugins.whichkey"),
 
   require("plugins.telescope"),

@@ -21,7 +21,8 @@ vim.opt.sidescrolloff = 2
 vim.opt.virtualedit = "block" -- Allow positioning cursor even where is no char (convenient for block selections <C-v>)
 vim.opt.termguicolors = true -- Support 24-bit RGB
 
--- vim.opt.shifwidth = 4
+-- vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 -- vim.opt.tabstop = 4
 -- vim.opt.softtabstop = 4
 -- vim.opt.expandtab = true
