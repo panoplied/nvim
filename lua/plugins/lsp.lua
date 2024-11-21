@@ -152,6 +152,13 @@ return {
             },
           },
         },
+        ts_ls = {
+          cmd = { "typescript-language-server", "--stdio", "--log-level", "4" },
+          init_options = {
+            hostinfo = "vim",
+            maxTsServerMemory = 8192,
+          },
+        },
       }
 
       -- Ensure the servers and tools are installed
