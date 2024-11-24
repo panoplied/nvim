@@ -4,8 +4,17 @@ vim.opt.number = true
 vim.opt.mouse = "a"
 -- vim.opt.showmode = true -- TODO: consider disabling showing mode when status line plugin installed
 vim.opt.wrap = false
+
 vim.opt.autoindent = true
+vim.opt.smartindent = true
 vim.opt.breakindent = true
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.smarttab = true
+-- vim.opt.expandtab = true
+
 vim.opt.undofile = true
 vim.opt.ignorecase = true -- Case-insensitive search unless \C or capital letters used
 vim.opt.smartcase = true
@@ -21,11 +30,6 @@ vim.opt.sidescrolloff = 2
 vim.opt.virtualedit = "block" -- Allow positioning cursor even where is no char (convenient for block selections <C-v>)
 vim.opt.termguicolors = true -- Support 24-bit RGB
 
--- vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
--- vim.opt.tabstop = 4
--- vim.opt.softtabstop = 4
--- vim.opt.expandtab = true
 
 vim.opt.list = true -- Set up some whitespaces chars display (`h: 'list'`, `h: 'listchars'`)
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }

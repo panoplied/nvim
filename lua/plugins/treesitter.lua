@@ -12,6 +12,7 @@ return {
         "bash",
         "c", -- Mandatory
         "diff",
+        "go",
         "html",
         "lua", -- Mandatory
         "luadoc",
