@@ -30,7 +30,6 @@ vim.opt.sidescrolloff = 2
 vim.opt.virtualedit = "block" -- Allow positioning cursor even where is no char (convenient for block selections <C-v>)
 vim.opt.termguicolors = true -- Support 24-bit RGB
 
-
 vim.opt.list = true -- Set up some whitespaces chars display (`h: 'list'`, `h: 'listchars'`)
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
@@ -67,4 +66,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
-

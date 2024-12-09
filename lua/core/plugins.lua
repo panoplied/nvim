@@ -39,5 +39,5 @@ require("lazy").setup({
 
   -- TODO: consider adding dashboard/splashscreen
 
-  require("plugins.misc")
+  require("plugins.misc"),
 })

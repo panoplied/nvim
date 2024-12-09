@@ -14,8 +14,8 @@ return {
     },
   },
   opts = {
-    notify_on_error = false,
-
+    notify_on_error = true,
+    notify_no_formatters = true,
     --[[
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -37,13 +37,14 @@ return {
       --]]
 
     formatters_by_ft = {
+      -- c = { "clang-format" }, -- already covered by clangd LSP
+      rust = { "rustfmt" },
       lua = { "stylua" },
-      go = { "gofumpt", "goimports", "golines" },
       -- Conform can also run multimple formatters sequentially
-      -- python = { "isort", "black" },
-      --
+      go = { "gofumpt", "goimports", "golines" },
+      python = { "ruff" },
       -- You can use 'stop_after_first' to run the first formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "prettierd", "prettier", stop_after_first = true },
     },
   },
 }
