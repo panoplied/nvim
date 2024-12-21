@@ -42,7 +42,8 @@ return {
       lua = { "stylua" },
       -- Conform can also run multimple formatters sequentially
       go = { "gofumpt", "goimports", "golines" },
-      python = { "ruff" },
+      python = { "black" },
+      -- python = { "ruff" },
       -- You can use 'stop_after_first' to run the first formatter from the list
       javascript = { "prettierd", "prettier", stop_after_first = true },
     },
