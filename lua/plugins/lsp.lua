@@ -156,7 +156,7 @@ return {
         },
 
         ts_ls = {
-          cmd = { "typescript-language-server", "--stdio", "--log-level", "4" },
+          cmd = { "typescript-language-server", "--stdio" },
           init_options = {
             hostinfo = "vim",
             maxTsServerMemory = 8192,
