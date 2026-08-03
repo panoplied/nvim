@@ -1,3 +1,3 @@
-# nvim config
+# meowvim: custom neovim config
 
 💻🐅
